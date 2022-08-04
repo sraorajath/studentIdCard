@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .mat-drawer-inner-container {
+    overflow-x: hidden;
+  }
+}
+.mat-sidenav {
+  width: 240px;
+}
+.mat-drawer-container {
+  height: 100%;
+}
+.mat-nav-list {
+  padding-top: 0;
+}
+mat-sidenav-content {
+  padding: 20px;
+}
