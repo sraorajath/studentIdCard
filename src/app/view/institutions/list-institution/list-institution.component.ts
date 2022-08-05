@@ -42,11 +42,13 @@ export class ListInstitutionComponent implements OnInit {
       { headerName:'Address', field: 'address'}
     ];
 
+    this.rowStyle = { 'text-align': 'left' };
+
     this.gridOptions = {
       columnDefs: this.columnDefs,
       // defaultColDef: this.defaultColDef,
       // frameworkComponents: this.frameworkComponents,
-      // rowStyle: this.rowStyle,
+      rowStyle: this.rowStyle,
       suppressCellFocus: true
     };
 

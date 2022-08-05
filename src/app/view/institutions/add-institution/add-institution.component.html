@@ -2,20 +2,20 @@
   <mat-card-title>Add Institution</mat-card-title>
 
   <mat-card-content>
-    <form>
+    <form [formGroup]="addInstitutionForm">
 
       <mat-grid-list cols="2" rowHeight="70px">
 
         <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field class="full-width-field">
-            <input matInput type="text" placeholder="Institution Name" >
+            <input matInput placeholder="Institution Name" formControlName="institution_name">
             <!-- <mat-error *ngIf="orderFormControls.customer_name.errors">{{getErrorMessage(orderFormControls, 'customer_name')}}</mat-error> -->
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field class="full-width-field">
-            <input matInput type="tel" placeholder="Contact Number" >
+            <input matInput placeholder="Contact Number" formControlName="contact_number">
             <!-- <mat-error *ngIf="orderFormControls.customer_name.errors">{{getErrorMessage(orderFormControls, 'customer_name')}}</mat-error> -->
           </mat-form-field>
         </mat-grid-tile>
@@ -26,14 +26,14 @@
 
         <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field class="full-width-field">
-            <input matInput type="email" placeholder="Email" >
+            <input matInput placeholder="Email" formControlName="email">
             <!-- <mat-error *ngIf="orderFormControls.customer_name.errors">{{getErrorMessage(orderFormControls, 'customer_name')}}</mat-error> -->
           </mat-form-field>
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field class="full-width-field">
-            <textarea matInput placeholder="Address" ></textarea>
+            <textarea matInput placeholder="Address" formControlName="address"></textarea>
             <!-- <mat-error *ngIf="orderFormControls.customer_name.errors">{{getErrorMessage(orderFormControls, 'customer_name')}}</mat-error> -->
           </mat-form-field>
         </mat-grid-tile>
@@ -44,8 +44,8 @@
         <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field class="full-width-field" >
             <mat-label><mat-icon>attach_file</mat-icon> Choose Institution Logo</mat-label>
-            <input (click)="institutionLogo.click()" readonly matInput type="text" [(ngModel)]="instLogo" value="{{instLogo}}" name="institution_logo">
-            <button *ngIf="instLogo" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event)">
+            <input (click)="institutionLogo.click()" readonly matInput formControlName="institution_logo">
+            <button *ngIf="addInstitutionFormControls.institution_logo.value" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event, 'institution_logo')">
               <mat-icon>close</mat-icon>
             </button>
             <input hidden  #institutionLogo (change)="selectFile($event, 'institution_logo')" type="file" id="instiLogo">
@@ -55,8 +55,8 @@
         <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field class="full-width-field" >
             <mat-label><mat-icon>attach_file</mat-icon> Choose ID Background</mat-label>
-            <input (click)="backgroundImage.click()" readonly matInput type="text" [(ngModel)]="designImg" value="{{designImg}}" name="design_image">
-            <button *ngIf="designImg" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event)">
+            <input (click)="backgroundImage.click()" readonly matInput formControlName="background_image">
+            <button *ngIf="addInstitutionFormControls.background_image.value" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event, 'background_image')">
               <mat-icon>close</mat-icon>
             </button>
             <input hidden  #backgroundImage (change)="selectFile($event, 'background_image')" type="file" id="designImage">
@@ -68,8 +68,8 @@
         <mat-grid-tile colspan="1" rowspan="1">
           <mat-form-field class="full-width-field" >
             <mat-label><mat-icon>attach_file</mat-icon> Choose Principal Signature</mat-label>
-            <input (click)="principalSignature.click()" readonly matInput type="text" [(ngModel)]="principalSig" value="{{principalSig}}" name="pricipal_signature">
-            <button *ngIf="principalSig" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event)">
+            <input (click)="principalSignature.click()" readonly matInput formControlName="pricipal_signature">
+            <button *ngIf="addInstitutionFormControls.pricipal_signature.value" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event, 'pricipal_signature')">
               <mat-icon>close</mat-icon>
             </button>
             <input hidden  #principalSignature (change)="selectFile($event, 'pricipal_signature')" type="file" id="principalSig">

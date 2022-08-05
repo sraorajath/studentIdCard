@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'add-institution',
@@ -7,38 +8,50 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 })
 export class AddInstitutionComponent implements OnInit {
 
-  fileAttr = '';
   public instLogo = '';
   public designImg = '';
   public principalSig = '';
-  @ViewChild('fileInput') fileInput: ElementRef;
+  addInstitutionForm: FormGroup;
+  // @ViewChild('fileInput') fileInput: ElementRef;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
-    
+    this.initForm();
+  }
+
+  initForm() {
+    this.addInstitutionForm = this.fb.group({
+      institution_name: ['', [Validators.required]],
+      contact_number: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      address: ['', [Validators.required]],
+      institution_logo: ['', [Validators.required]],
+      background_image: ['', [Validators.required]],
+      pricipal_signature: ['', [Validators.required]]
+    });
+  }
+
+  get addInstitutionFormControls() {
+    return this.addInstitutionForm.controls;
   }
 
   selectFile(imgFile, type) {
     if (imgFile.target.files && imgFile.target.files[0]) {
-      // this.instLogo = '';
       Array.from(imgFile.target.files).forEach((file: File) => {
         switch(type) {
           case 'institution_logo':
-            // this.instLogo = '';
-            this.instLogo = file.name;
+            this.addInstitutionForm.controls['institution_logo'].setValue(file.name);
             break;
           case 'background_image':
-            // this.designImg = '';
-            this.designImg = file.name; 
+            this.addInstitutionForm.controls['background_image'].setValue(file.name);
             break;
           case 'pricipal_signature':
-            // this.principalSig = '';
-            this.principalSig = file.name;
+            this.addInstitutionForm.controls['pricipal_signature'].setValue(file.name);
         }
-        // this.instLogo += file.name ;
       });
-      
       // Reset if duplicate image uploaded again
       // this.fileInput.nativeElement.value = "";
     } else {
@@ -46,9 +59,19 @@ export class AddInstitutionComponent implements OnInit {
     }
   }
 
-  removeAttachment(e) {
-    // e.preventDefault();
-    this.instLogo = '';
+  removeAttachment(e, type) {
+    e.preventDefault();
+    switch(type) {
+      case 'institution_logo':
+        this.addInstitutionForm.controls['institution_logo'].setValue('');
+        break;
+      case 'background_image':
+        this.addInstitutionForm.controls['background_image'].setValue('');
+        break;
+      case 'pricipal_signature':
+        this.addInstitutionForm.controls['pricipal_signature'].setValue('');
+        break;
+    }
   }
 }
 
