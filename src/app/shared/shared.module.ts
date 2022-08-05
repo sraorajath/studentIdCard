@@ -11,6 +11,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
 
 // Components imports
 import {
@@ -34,7 +38,11 @@ import {
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatInputModule
   ],
   exports: [
     // Module exports
@@ -48,6 +56,10 @@ import {
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatInputModule,
 
     // Component exports
     HeaderComponent,

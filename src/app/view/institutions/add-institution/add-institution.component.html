@@ -1,1 +1,88 @@
-<p>Add Institution Works</p>
+<mat-card>
+  <mat-card-title>Add Institution</mat-card-title>
+
+  <mat-card-content>
+    <form>
+
+      <mat-grid-list cols="2" rowHeight="70px">
+
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field class="full-width-field">
+            <input matInput type="text" placeholder="Institution Name" >
+            <!-- <mat-error *ngIf="orderFormControls.customer_name.errors">{{getErrorMessage(orderFormControls, 'customer_name')}}</mat-error> -->
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field class="full-width-field">
+            <input matInput type="tel" placeholder="Contact Number" >
+            <!-- <mat-error *ngIf="orderFormControls.customer_name.errors">{{getErrorMessage(orderFormControls, 'customer_name')}}</mat-error> -->
+          </mat-form-field>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" rowHeight="70px">
+
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field class="full-width-field">
+            <input matInput type="email" placeholder="Email" >
+            <!-- <mat-error *ngIf="orderFormControls.customer_name.errors">{{getErrorMessage(orderFormControls, 'customer_name')}}</mat-error> -->
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field class="full-width-field">
+            <textarea matInput placeholder="Address" ></textarea>
+            <!-- <mat-error *ngIf="orderFormControls.customer_name.errors">{{getErrorMessage(orderFormControls, 'customer_name')}}</mat-error> -->
+          </mat-form-field>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" rowHeight="70px">
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field class="full-width-field" >
+            <mat-label><mat-icon>attach_file</mat-icon> Choose Institution Logo</mat-label>
+            <input (click)="institutionLogo.click()" readonly matInput type="text" [(ngModel)]="instLogo" value="{{instLogo}}" name="institution_logo">
+            <button *ngIf="instLogo" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event)">
+              <mat-icon>close</mat-icon>
+            </button>
+            <input hidden  #institutionLogo (change)="selectFile($event, 'institution_logo')" type="file" id="instiLogo">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field class="full-width-field" >
+            <mat-label><mat-icon>attach_file</mat-icon> Choose ID Background</mat-label>
+            <input (click)="backgroundImage.click()" readonly matInput type="text" [(ngModel)]="designImg" value="{{designImg}}" name="design_image">
+            <button *ngIf="designImg" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event)">
+              <mat-icon>close</mat-icon>
+            </button>
+            <input hidden  #backgroundImage (change)="selectFile($event, 'background_image')" type="file" id="designImage">
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="2" rowHeight="70px">
+        <mat-grid-tile colspan="1" rowspan="1">
+          <mat-form-field class="full-width-field" >
+            <mat-label><mat-icon>attach_file</mat-icon> Choose Principal Signature</mat-label>
+            <input (click)="principalSignature.click()" readonly matInput type="text" [(ngModel)]="principalSig" value="{{principalSig}}" name="pricipal_signature">
+            <button *ngIf="principalSig" matSuffix mat-icon-button aria-label="Clear" (click)="removeAttachment($event)">
+              <mat-icon>close</mat-icon>
+            </button>
+            <input hidden  #principalSignature (change)="selectFile($event, 'pricipal_signature')" type="file" id="principalSig">
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-grid-list cols="1" rowHeight="70px">
+        <mat-grid-tile colspan="1" rowspan="1" >
+          <button class="" mat-flat-button color="primary" >Add Institution</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+    </form>
+  </mat-card-content>
+</mat-card>
